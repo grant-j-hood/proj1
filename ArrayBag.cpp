@@ -159,15 +159,18 @@ bool ArrayBag<ItemType>::reduce()
     ItemType iRemove = items[0]; //index of item with the minimum frequency 
 
     // Find the item with the smallest frequency
+    
+    // Start of ChatGPT - "create a for loop that checks if the current items frequency is less then the minimum, if it is swap
     for (int i = 0; i < itemCount; i++) {
         ItemType check = items[i];
-        int currentFrequency = getFrequencyOf(check);
+        int currFrequency = getFrequencyOf(check);
 
-        if (currentFrequency < minFrequency) {
+        if (currFrequency < minFrequency) {
             minFrequency = currentFrequency;
             iRemove = check;
         }
     }
+    //END Of ChatGPT Prompt, modified to use ItemType and relevant identifiers
 
     // Remove all occurrences of the item with the smallest frequency
     while (contains(iRemove)) { //iterates through till all instances of the min are gone
